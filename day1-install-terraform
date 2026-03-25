@@ -12,4 +12,4 @@
   aws --version
    terraform --version
   ##git you can check from the startup vs code is also there 
-  
+  ##finally reboot the vm

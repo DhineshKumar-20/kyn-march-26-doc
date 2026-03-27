@@ -1,5 +1,5 @@
 #lets create our security group for alb
-  #cr4eate a new file b1.alb-sg.tf copy line 4 till 29 on line 6 change my name to your name
+  #cr4eate a new file b1.alb-sg.tf copy line 3 till 29 on line 6 change my name to your name
   resource "aws_security_group" "alb_sg" {
   # ... other configuration ...
   ######allow ssh access from anywhere

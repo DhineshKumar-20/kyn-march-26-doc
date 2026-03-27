@@ -1,0 +1,23 @@
+##go to ec2.tf at the starting put /* and ending */
+  ##as instance will be created using autoscaling this autoscaling geet attached with your lb so we need to disable 
+  ####b5.tg-instance.tf #put /* and ending */
+  #disable the ec2-output.tf /* ending */
+  ##lets create c1-ec2-templates.tf copy from line number 6 till 21 also change the name of the template in line 7 then do terraform apply
+  resource "aws_launch_template" "ec2_instance" {
+  name_prefix   = "gopal-web-launch-template"
+  image_id      = data.aws_ami.amazon_linux.id
+  instance_type = var.instance_type["test"]
+
+  key_name               = "gopal"
+  vpc_security_group_ids = [aws_security_group.web_sg.id]
+  user_data = <<-EOF
+               #!/bin/bash
+               yum update -y
+               yum install httpd -y
+               systemctl start httpd
+               systemctl enable httpd
+               echo "Welcome to terraform test from $HOSTNAME" > /var/www/html/index.html
+               EOF
+}
+
+  
